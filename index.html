@@ -3125,12 +3125,26 @@ slide:not(.current) .plotly.html-widget{
 
 <p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.</p>
 
-</article></slide><slide class=""><hgroup><h2>Slide with Bullets</h2></hgroup><article  id="slide-with-bullets">
+</article></slide><slide class=""><hgroup><h2>Steps in creating slides</h2></hgroup><article  id="steps-in-creating-slides">
 
 <ul>
-<li>Bullet 1</li>
-<li>Bullet 2</li>
-<li>Bullet 3</li>
+<li>sign into github</li>
+<li>create a new repository</li>
+<li>go into rstudio and create a new project FROM a github repository</li>
+<li>File&gt;New Project&gt;Version Control&gt;Git&gt;paste url from github repository page</li>
+<li>Note: creating a separate project for your slides is good practice because it is publicly available</li>
+<li>New RMarkdown, select presetation instead of document (choose html ioslides)</li>
+<li>Save RMarkdown as &ldquo;index.html&rdquo; – this is important, make sure its lowercase</li>
+<li>push them to github: on the GIT tab in the upper right hand window in Rstudio
+
+<ul>
+<li>select all files and commit (must commit the index.html, other items are optional)</li>
+<li>select push after commiting</li>
+<li>enter github username and password</li>
+</ul></li>
+<li>Go to settings in GitHub and scroll down to &ldquo;GitHub Pages&rdquo;, then change Source None to Master Branch</li>
+<li>copy url above this option &quot;Your site is ready to be published at <a href='https://etc' title=''>https://etc</a></li>
+<li>click edit on main page and put the url link into the Website box, and you can add a Description</li>
 </ul>
 
 </article></slide><slide class=""><hgroup><h2>Slide with R Output</h2></hgroup><article  id="slide-with-r-output">
