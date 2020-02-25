@@ -1,0 +1,46 @@
+---
+title: "Slides"
+author: "Ally Hinton"
+date: "2/25/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Steps in creating slides
+
+- sign into github
+- create a new repository
+- go into rstudio and create a new project FROM a github repository
+- File>New Project>Version Control>Git>paste url from github repository page
+- Note: creating a separate project for your slides is good practice because it is publicly available
+- New RMarkdown, select presetation instead of document (choose html ioslides)
+- Save RMarkdown as "index.html" -- this is important, make sure its lowercase
+- push them to github: on the GIT tab in the upper right hand window in Rstudio
+  - select all files and commit (must commit the index.html, other items are optional)
+  - select push after commiting
+  - enter github username and password
+- Go to settings in GitHub and scroll down to "GitHub Pages", then change Source None to Master Branch
+- copy url above this option "Your site is ready to be published at https://etc
+- click edit on main page and put the url link into the Website box, and you can add a Description 
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
