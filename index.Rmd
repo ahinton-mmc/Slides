@@ -226,27 +226,19 @@ You can also make files publicly available via the GitHub website.
 > -  Same web link should update (but give it some time)
 > -  Weblink can be emailed, GitHub page can be shared
 
---- 
-
-![](https://media.giphy.com/media/xUA7aQOxkz00lvCAOQ/giphy.gif)
-
-
-![](https://media.giphy.com/media/XaL3mFhBmmbTiJTE1c/giphy.gif)
-
---- 
-
-<div class="columns-2">
-  ![](https://media.giphy.com/media/XaL3mFhBmmbTiJTE1c/giphy.gif) {width=40%}
-  ![](https://media.giphy.com/media/xUA7aQOxkz00lvCAOQ/giphy.gif) {width=40%}
-
-</div>
+##
+  ![](https://media.giphy.com/media/XaL3mFhBmmbTiJTE1c/giphy.gif)
+  
+## 
+  ![](https://media.giphy.com/media/xUA7aQOxkz00lvCAOQ/giphy.gif)
 
 ## The takeaway:
 
 If your slides are... 
-**simple**, 
-  *you don't care too much about style*, 
-  **you want to show code, figures, and tables...**
+
+- **simple**, 
+  - *you don't care too much about style*, 
+  - **you want to show code, figures, and tables...**
   
 **Use ioslides!** 
 
