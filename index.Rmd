@@ -1,33 +1,10 @@
 ---
 title: 'Slide Over, PowerPoint: Making slides in R'
 author: "Ally Hinton"
-date: "2/25/2020"
+date: "3/10/2020"
 output:
   ioslides_presentation: default
 ---
-
-<style>
-.footer {
-    color: black;
-    background: #E8E8E8;
-    position: fixed;
-    top: 90%;
-    text-align:center;
-    width:100%;
-}
-</style>
-
-<style>
-.smallcode pre code {
-  font-size: 1em;
-}
-</style>
-
-<style>
-.large-code pre code {
-  font-size: 20px;
-}
-</style>
 
 ```{r options, include=FALSE}
 
@@ -227,18 +204,25 @@ You can also make files publicly available via the GitHub website.
 > -  Weblink can be emailed, GitHub page can be shared
 
 ##
-  ![](https://media.giphy.com/media/XaL3mFhBmmbTiJTE1c/giphy.gif)
-  
+
+<div class="centered">
+
+![](https://media.giphy.com/media/XaL3mFhBmmbTiJTE1c/giphy.gif){height=300%}
+
+</div>
+
 ## 
-  ![](https://media.giphy.com/media/xUA7aQOxkz00lvCAOQ/giphy.gif)
+
+<div class="centered">
+
+![](https://media.giphy.com/media/xUA7aQOxkz00lvCAOQ/giphy.gif){width=100% height=400%}
+
+</div>
 
 ## The takeaway:
 
 If your slides are... 
-
-- **simple**, 
-  - *you don't care too much about style*, 
-  - **you want to show code, figures, and tables...**
+**simple**, *you don't care too much about style*, **you want to show code, figures, and tables...**
   
 **Use ioslides!** 
 
