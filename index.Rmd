@@ -1,46 +1,268 @@
 ---
-title: "Slides"
+title: 'Slide Over, PowerPoint: Making slides in R'
 author: "Ally Hinton"
 date: "2/25/2020"
-output: ioslides_presentation
+output:
+  ioslides_presentation: default
 ---
 
+<style>
+.footer {
+    color: black;
+    background: #E8E8E8;
+    position: fixed;
+    top: 90%;
+    text-align:center;
+    width:100%;
+}
+</style>
+
+<style>
+.smallcode pre code {
+  font-size: 1em;
+}
+</style>
+
+<style>
+.large-code pre code {
+  font-size: 20px;
+}
+</style>
+
+```{r options, include=FALSE}
+
+## Options
+    # logo: "mmcri logo.png"
+    # incremental: true #render bullets incrementally
+    #  transition: slower #customize slide transitions "slower" "faster"
+    #  powerpoint_presentation: default
+     
+```
+
 ```{r setup, include=FALSE}
+
 knitr::opts_chunk$set(echo = FALSE)
+
 ```
 
-## R Markdown
+```{r library, include=FALSE}
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+#devtools::install_github('thomasp85/gganimate')
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+library(tidyverse)
+library(gganimate)
+library(transformr)
+library(gapminder)
+library(ggplot2)
+library(gtsummary)
 
-## Steps in creating slides
-
-- sign into github
-- create a new repository
-- go into rstudio and create a new project FROM a github repository
-- File>New Project>Version Control>Git>paste url from github repository page
-- Note: creating a separate project for your slides is good practice because it is publicly available
-- New RMarkdown, select presetation instead of document (choose html ioslides)
-- Save RMarkdown as "index.html" -- this is important, make sure its lowercase
-- push them to github: on the GIT tab in the upper right hand window in Rstudio
-  - select all files and commit (must commit the index.html, other items are optional)
-  - select push after commiting
-  - enter github username and password
-- Go to settings in GitHub and scroll down to "GitHub Pages", then change Source None to Master Branch
-- copy url above this option "Your site is ready to be published at https://etc
-- click edit on main page and put the url link into the Website box, and you can add a Description 
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
 ```
 
-## Slide with Plot
 
-```{r pressure}
-plot(pressure)
+---
+
+<font size=20>**This town ain't big enough for the both of us**</font>
+
+<div class="centered">
+
+![](https://media.giphy.com/media/kUxSsjplVZqWhQMf4T/giphy.gif)
+
+</div>
+
+## Why not just use Powerpoint?
+
+<div class="centered">
+
+![](pp is boring.gif){width=100% height=400%}
+
+</div>
+
+## I already use R for my analyses, can I use it to build slides?
+
+<font size=20> ...Yes you can!</font>
+
+## What if I don't really use R (much)
+
+- <font size=16>It does take a bit of practice</font>
+- <font size=16>You'll need to use some CSS code if you like to customize things like fonts and colors</font>
+- <font size=16>You'll need to use RMarkdown</font>
+
+## Wait, what is Rmarkdown?
+ - Just like a regular R script but allows you to 'knit' a final document to many different formats including:
+    - pdf 
+    - word
+    - html
+    - and slides! 
+ - You write in a mixture of plain english and code
+ - Final doc can include code and output/figures
+ 
+## Let's talk about some of the advantages and disadvantages to creating presentations in R Studio vs. Powerpoint:
+
+## Advantages
+
+- Interactive visualizations
+- Include code and code results easily and legibly
+- Only requires a browser to open
+- The whole thing is reproducible!
+
+![](breakdancing_together.gif)
+
+## You can include animated R figures!!
+
+- Visualization options are only limited by what is possible in R 
+
+```{r, fig.height = 2, fig.width = 2, echo=FALSE}
+
+library(ggplot2)
+library(gganimate)
+
+ggplot(mtcars, aes(factor(cyl), mpg)) + 
+  geom_boxplot() + 
+  # Here comes the gganimate code
+  transition_states(
+    gear,
+    transition_length = 2,
+    state_length = 1
+  ) +
+  enter_fade() + 
+  exit_shrink() +
+  ease_aes('sine-in-out')
+
 ```
 
+## And another!
+
+```{r, out.width = '800px', echo=FALSE}
+
+gapminder <- gapminder
+
+ggplot(gapminder, aes(gdpPercap, lifeExp, size = pop, colour = country)) +
+  geom_point(alpha = 0.7, show.legend = FALSE) +
+  scale_colour_manual(values = country_colors) +
+  scale_size(range = c(2, 12)) +
+  scale_x_log10() +
+  facet_wrap(~continent) +
+  # Here comes the gganimate specific bits
+  labs(title = 'Year: {frame_time}', x = 'GDP per capita', y = 'life expectancy') +
+  transition_time(year) +
+  ease_aes('linear')
+
+```
+
+## You can show code and output! {.smaller}
+
+-  Show show code, show output, or show both!
+
+```{r echo=TRUE}
+trial %>% 
+  select(-ttdeath, -death, -response, -grade) %>% 
+  tbl_summary(by=trt)
+```
+
+## Disadvantages
+
+- Takes time to knit slides if complex (~5 minutes)
+- Takes time for your changes to be updated in the browser (another 5 minutes)
+- Requires some knowledge of R and RStudio to create documents
+- Limited slide layout and styling options
+- Some HTML/CSS knowledge to control aesthetics
+- Somewhat more difficult to edit/collaborate - the “finished” markdown can look confusing before it is knit, as it can contain some raw HTML, R, YAML, and/or CSS code.
+
+## Ok, how do I do it?
+
+**How do I tell R I want to create slides?**
+
+Specify the ioslides_presentation output format in the YAML metadata of your document: 
+
+
+![](YAML Header.JPG)
+
+
+##  What code do I use to separate slides? {.smaller}
+
+![](Slide formats.JPG)
+
+## How do I get my slides onto a web browswer?
+
+1. Sign into GitHub.com [GitHub.com](http://github.com)
+
+**Wait, what is GitHub again?**
+
+GitHub is a place to save your work, keeping track of changes over time. 
+You can also make files publicly available via the GitHub website.
+
+## Then what? {.smaller}
+
+<br />
+
+> - Create a new repository in GitHub
+> - Go into RStudio and create a new project FROM a GitHub repository
+>    - To do this, select: File>New Project>Version Control>Git>paste url from GitHub repository page
+- Note: Creating a separate RStudio project for your slides is good practice because it is publicly available
+
+<br />
+<br />
+<img src="New Project.JPG" align ="left" style="width:33%">
+<img src="Git.JPG" align ="middle" style="width:33%">
+<img src="Git url.JPG" align ="left" style="width:33%">
+
+## Ok, keep going...
+> -  New RMarkdown, select presetation instead of document (choose html ioslides)
+> -  Save RMarkdown as "index.html" -- this is important, make sure its lowercase
+> -  Push them to GitHub: on the GIT tab in the upper right hand window in Rstudio
+>   - Select all files and commit (must commit the index.html, other items are optional)
+>   - Select push after commiting
+>   - Enter GitHub username and password
+
+## Just a few more steps...
+
+> -  Go to settings in GitHub and scroll down to "GitHub Pages", then change Source None to Master Branch
+> -  Copy url above this option "Your site is ready to be published at https://github.com/ahinton-mmc/Slides"
+> -  Click edit on main page and put the url link into the Website box, and you can add a Description 
+
+## How do I share and update slides?
+
+> -  Make changes in R then Git commit/push
+> -  Same web link should update (but give it some time)
+> -  Weblink can be emailed, GitHub page can be shared
+
+--- 
+
+![](https://media.giphy.com/media/xUA7aQOxkz00lvCAOQ/giphy.gif)
+
+
+![](https://media.giphy.com/media/XaL3mFhBmmbTiJTE1c/giphy.gif)
+
+--- 
+
+<div class="columns-2">
+  ![](https://media.giphy.com/media/XaL3mFhBmmbTiJTE1c/giphy.gif) {width=40%}
+  ![](https://media.giphy.com/media/xUA7aQOxkz00lvCAOQ/giphy.gif) {width=40%}
+
+</div>
+
+## The takeaway:
+
+If your slides are... 
+**simple**, 
+  *you don't care too much about style*, 
+  **you want to show code, figures, and tables...**
+  
+**Use ioslides!** 
+
+<div class="centered">
+![](https://media.giphy.com/media/TlYrFqeOa4p3y/giphy.gif)
+</div>
+
+
+## Gallery of RMarkdown Formats and Outputs
+
+- Presentations is one of the sections
+
+https://rmarkdown.rstudio.com/gallery.html
+
+## Resources
+- 4.1 ioslides presentation
+https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html
+- You can also knit to PowerPoint
+  - https://support.rstudio.com/hc/en-us/articles/360004672913-Rendering-PowerPoint-Presentations-with-RStudio
